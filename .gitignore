@@ -8,3 +8,6 @@
 *.toc
 *.fdb_latexmk
 *.out
+
+**/*.env
+**node_modules**
