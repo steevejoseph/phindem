@@ -1,0 +1,145 @@
+\section{Design Constraints}
+
+\subsection{Instragram Platform API}
+\subsubsection{Deprecation}
+As originally anticipated, the Basic display portion of the IG Platform API was set to be deprecated by early 2020,
+accelerating the timeline for this project significantly. Essentially, the intent was to get a working prototype/
+minimum viable product (MVP) released before deprecation. Of course, deprecation would still have to be accounted for,
+but the benefits of the MVP could have been reaped in the meantime. A potentially unaccounted for change is the effect 
+of the deprecation of the Public Content endpoints on the ability to query for images based on hashtags.
+This is mentioned because it is a critical feature of this service.
+
+\subsubsection{Discontinuation of New Client Registration}
+An unanticipated hiccup was the discontinuation of new client registrations by the IG Platform,
+essentially forcing the use of the Instagram Graph API. This was retroactively discovered after the discontinuation
+in \date{October 15, 2019}.
+
+% @steeve: look into details of Graph API
+\subsection{Instagram Graph API}
+The Instagram Graph API is the successor to the Instagram Platform API (sometimes referred to as the Legacy API)
+Presumably, this API implements GraphQL in order to limit the amount of data sent with each request.
+
+The benefit of this is better control of privacy issues across the platform. The potential drawback is that
+the Graph API may not have the full functionality that the IG Platform API had, for good reason as well.
+Facebook seems to be moving in a direction wherein the level of user information is limited, most likely to mitigate potential harm from bad actors.
+
+
+\subsubsection{Limitations}
+The critical functionality of this service is using Instagram's API to gather a set of pictures based on hashtags,
+and filter for users that meet a certain set of requirements. These requirements are predicated on metrics such as:
+user follower count, user following count, likes on said picture, comments on said picture, etc. It seems that 
+the Graph API is solely concerned with business accounts, as of \date{\today}, and that regular personal accounts
+do not have public API endpoints exposed. The following are points of interest in the new API.
+
+\subsubsection{IG User Endpoints}
+Represents an Instagram Business Account or an Instagram Creator Account. Some relevant returnable fields from
+this endpoint are:
+\begin{itemize}
+    \item biography
+    \item followers\_count
+    \item follows\_count
+    \item name
+    \item username
+    \item website
+\end{itemize}
+
+Relevant edges are:
+\begin{itemize}
+    \item Business Discovery: Allows you to get data about other Instagram Business or Creator IG Users.
+    \item Insights: Represents social interaction metrics on an IG User. 
+    \item Media
+    \item Recently Searched Hashtags
+\end{itemize}
+
+
+\subsubsection{IG User: Insights}
+
+\subsubsection{IG Media}
+Represents and Instagram photo, video, story, or album.
+
+Relevant returnable fields from this object are:
+\begin{itemize}
+    \item caption
+    \item children (if IG album)
+    \item comments
+    \item comments\_count
+    \item like\_count
+    \item permalink
+    \item username
+    \item media\_type
+    \item timestamp
+\end{itemize}
+
+\subsubsection{IG Media: Insights}
+Represents social interaction metrics on an IG Media object. Relevant metrics include 
+\begin{itemize}
+    \item Photo and Video Metrics
+    \begin{itemize}
+        \item engagement: Total number of likes and IG Comments on the album IG Media object.
+        \item impressions: Total number of times the album IG Media object has been seen.
+        \item reach: Total number of unique Instagram accounts that have seen the album IG Media object.
+        \item saved: Total number of unique Instagram accounts that have saved the album IG Media object.
+        \item video\_views
+    \end{itemize}
+
+    \item Album Metrics
+    \begin{itemize}
+        \item carousel\_album\_engagement: Total number of likes and IG Comments on the album IG Media object.
+        
+        \item carousel\_album\_impressions: Total number of times the album IG Media object has been seen.
+        
+        \item carousel\_album\_reach: Total number of unique Instagram accounts that have seen the album IG Media object.
+        
+        \item carousel\_album\_saved: Total number of unique Instagram accounts that have saved the album IG Media object.
+    \end{itemize}
+    \item Story Metrics
+    \begin{itemize}
+        \item exits: Number of times someone exited the story IG Media object.
+        
+        \item  impressions: Total number of times the story IG Media object has been seen.
+        
+        \item reach: Total number of unique Instagram accounts that have seen the story IG Media object.
+        
+        \item replies: Total number of replies (IG Comments) on the story IG Media object.
+        
+        \item  taps\_forward: Total number of taps to see this story IG Media object's next photo or video.
+
+        \item taps\_back: Total number of taps to see this story IG Media object's previous photo or video.
+    \end{itemize}
+\end{itemize}
+
+
+\subsubsection{IG Hashtag}
+Represents an Instagram hashtag. Relevant edges from this node are
+\begin{itemize}
+    \item \textbf{Recent Media} Returns a collection of media recently tagged with this hashtag.
+    \item \textbf{Top Media} Returns a collection of the most popular media tagged with this hashtag.
+\end{itemize}
+
+\subsubsection{IG Hashtag: Recent Media}
+Represents a collection of the most recently published photo and video IG Media objects that have been tagged with a hashtag.
+
+\subsubsection{Comments}
+Represents a collection of IG Comments on an IG Media object. Not readily apparent what value these have,
+may be possible to perform aggregate sentiment analysis on an IG Media Object's comments.
+
+\subsection{Instagram Basic Display API}
+The Instagram Basic Display API seems to replicate the functionality of the Legacy API's Basic panel, 
+which allowed the reading a user's profile info and media. While there is a plethora of useful information accessable,
+some core components that seem to be missing are:
+\begin{itemize}
+    \item user follower count
+    \item user following count
+    \item user engagement metrics
+\end{itemize}
+The lack of the above fields indicate Instagram's focus on privacy and security for regular accounts.
+As a result, this service will be primarily focused on Creator and Business Instagram accounts,
+which have more information readilt available.
+\subsubsection{Limitations}
+\section{Prior Attempts}
+This section focuses on prior attempts at solving the problem mentioned in the Introduction. 
+
+\section{Similar Software}
+To date, (\date{\today}), there does not seem to be any similar products or services in this space.
+Specifically, many of the applications using Instagram's API are using the Legacy version, either from presumable reluctance
+to migrate, or due to perceived lack of functionality in the Graph and Basic Display APIs.

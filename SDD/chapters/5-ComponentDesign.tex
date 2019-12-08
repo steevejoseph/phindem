@@ -1,0 +1,25 @@
+\section{API}
+This section covers implementation details for the API of this service.
+
+\subsection{Backend Language}
+ExpressJS was chosen to be the backend language of choice for this service.  The reasons why are numerous:
+\begin{itemize}
+    \item written in JS
+    \item simple, flexible, extensible
+    \item "One language to rule them all"
+\end{itemize}
+
+\subsection{Routes}
+At the very least, the necessary routes are:
+\begin{itemize}
+    \item login: goes through Instagram's auth flow
+    \item query: takes in a query object, returns a list of users
+\end{itemize}
+
+
+\section{User Interface}
+This section covers implementation details of the UI portion of this service. This service will primarily be web-based. ReactJS will be used as the UI framework. Rationale:
+\begin{itemize}
+    \item It is the framework I know best
+    \item Fits into "one language to rule them all" paradigm
+\end{itemize}
