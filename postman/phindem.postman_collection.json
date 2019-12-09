@@ -9,58 +9,6 @@
 			"name": "IG Basic Display",
 			"item": [
 				{
-					"name": "IG Basic Display, Auth 1/2",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "119789b7-a72c-4eb1-9c32-9771b86d9316",
-								"exec": [
-									"pm.test(\"Status is 200\", () => pm.response.to.have.status(200))"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://api.instagram.com/oauth/authorize?app_id={{IG_APP_ID}}&redirect_uri={{IG_AUTH_CALLBACK}}&scope=user_profile,user_media&response_type=code",
-							"protocol": "https",
-							"host": [
-								"api",
-								"instagram",
-								"com"
-							],
-							"path": [
-								"oauth",
-								"authorize"
-							],
-							"query": [
-								{
-									"key": "app_id",
-									"value": "{{IG_APP_ID}}"
-								},
-								{
-									"key": "redirect_uri",
-									"value": "{{IG_AUTH_CALLBACK}}"
-								},
-								{
-									"key": "scope",
-									"value": "user_profile,user_media"
-								},
-								{
-									"key": "response_type",
-									"value": "code"
-								}
-							]
-						},
-						"description": "This request represents the first part of auth flow using the Instagram Basic Display API. \n\nSpecifically, it uses Phinder's:\n- app_id\n- redirect_url (heroku)\n\nIt must be run from a browser (Postman result is some text saying there's no JS component).\n\nThe important part is capturing the code variable returned in the callback URL."
-					},
-					"response": []
-				},
-				{
 					"name": "IG Basic Display, Auth 2/2",
 					"event": [
 						{
@@ -115,7 +63,7 @@
 								},
 								{
 									"key": "code",
-									"value": "AQDYgJoxpmQ4BGA9B7j6gNEqF7iATzZn898zP4_edqxMJ-ZwlYrdJ-fLnygyxzebVCuBusZn-lFX1vpc2PqrYabZoYR4ltUvfll1omdgUYgUFhY7ZC0wv7RI8kpVdf4gT4sZTxBlLbYJly7qCyh_0Zc2wlblUODXZZuWI-UCM_b2zPZCiiBlozYB-uhp8Gj4JC-a9ZKGGj0SCZVM4rAxc5yhbPIQp1wrTxsPF4hnUWiHiQ",
+									"value": "{{IG_AUTH_CODE}}",
 									"type": "text"
 								}
 							]

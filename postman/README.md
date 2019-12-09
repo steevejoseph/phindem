@@ -17,3 +17,7 @@ Heroku is [here](https://dashboard.heroku.com/apps/phindem/deploy/github)
 [Guide for getting long-lived (60 days) for FB Graph API](https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing/)
 
 TODO: learn to use pm.\* API
+
+NOTE: to run test suite, Auth flow 1/2 has to be run manually from a browser.
+
+Then, the value of code must be put into the IG_AUTH_CODE env var in the postman collection.
