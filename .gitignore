@@ -11,3 +11,6 @@
 
 **/*.env
 **node_modules**
+
+# Ignore Postman environment file
+**/*.postman_environment.json
