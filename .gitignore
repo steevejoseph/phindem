@@ -1,14 +1,5 @@
 .DS_Store
 
-**.fls	
-**.lof		
-**.synctex.gz
-**.log		
-**.lot		
-**.toc
-**.fdb_latexmk
-**.out
-
 **/*.env
 **node_modules**
 

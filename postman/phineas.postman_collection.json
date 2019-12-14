@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b6dd5030-4f94-42d6-ac7b-602ee581cd46",
-		"name": "phindem",
+		"name": "phineas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -81,7 +81,7 @@
 								"access_token"
 							]
 						},
-						"description": "This request represents the second part of auth flow using the Instagram Basic Display API.\n\nSpecifically, it uses Phinder's:\n\n- app_id\n- app_secret\n- redirect_url (heroku)\n- \nand takes in the `code` variable returned from the first part of the auth flow. \n\nThis request should return an object containing the fiels `access_token` and `user_id`."
+						"description": "This request represents the second part of auth flow using the Instagram Basic Display API.\n\nSpecifically, it uses Phineas's:\n\n- app_id\n- app_secret\n- redirect_url (heroku)\n- \nand takes in the `code` variable returned from the first part of the auth flow. \n\nThis request should return an object containing the fiels `access_token` and `user_id`."
 					},
 					"response": []
 				},

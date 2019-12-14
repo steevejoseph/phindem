@@ -4,7 +4,7 @@ The collection in postman called IG Basic Display contains mostly info from [thi
 
 Most of the pertinent info form completing that is [here](https://developers.facebook.com/apps/933969550330511/instagram/basic-display/?business_id=2450856925170792)
 
-Heroku is [here](https://dashboard.heroku.com/apps/phindem/deploy/github)
+Heroku is [here](https://dashboard.heroku.com/apps/phineas-server/deploy/github)
 
 [An overview](https://developers.facebook.com/docs/instagram-api/overview#pages) of the Instagram Graph API that I didn't get to previously.
 
